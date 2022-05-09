@@ -6388,6 +6388,9 @@ class URLRequest {
   ///**NOTE**: available only on iOS.
   Uri? iosMainDocumentURL;
 
+  ///The URL of the request because some url Parsing error
+  String? urlString; 
+
   URLRequest(
       {required this.url,
       this.method,
@@ -6401,7 +6404,9 @@ class URLRequest {
       this.iosHttpShouldUsePipelining,
       this.iosNetworkServiceType,
       this.iosTimeoutInterval,
-      this.iosMainDocumentURL});
+      this.iosMainDocumentURL,
+      this.urlString,
+    });
 
   static URLRequest? fromMap(Map<String, dynamic>? map) {
     if (map == null) {
@@ -6425,6 +6430,7 @@ class URLRequest {
       iosMainDocumentURL: map["iosMainDocumentURL"] != null
           ? Uri.parse(map["iosMainDocumentURL"])
           : null,
+       urlString: map["url"],
     );
   }
 
